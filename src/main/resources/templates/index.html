@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Subsidiary Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="container my-2">
+    <h1>Subsidiary List</h1>
+
+    <a th:href="@{/showNewSubsidiaryForm}" class="btn btn-primary btn-sm mb-3"> Add Subsidiary </a>
+
+    <table border="3" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Subsidiary Name</th>
+            <th>Subsidiary Country</th>
+            <th>Subsidiary EU Confirmation</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subsidiary : ${listSubsidiaries}">
+            <td th:text="${subsidiary.name}"></td>
+            <td th:text="${subsidiary.country}"></td>
+            <td th:text="${subsidiary.EUVerified}"></td>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${subsidiary.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteSubsidiaryById/{id}(id=${subsidiary.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
